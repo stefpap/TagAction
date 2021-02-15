@@ -1,5 +1,11 @@
-name: Bump version
-on: workflow_dispatch
+name: Create tag
+on: 
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Custom tag"
+        required: false
+        default:
 
 jobs:
   build:
@@ -15,6 +21,7 @@ jobs:
         WITH_V: true
         RELEASE_BRANCHES: master
         DEFAULT_BUMP: patch
-        INITIAL_VERSION: 0.0.1
-        VERBOSE: true
+        INITIAL_VERSION: 0.0.0
+        VERBOSE: false
+        CUSTOM_TAG: ${{ github.event.inputs.tag }}
 
