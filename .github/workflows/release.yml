@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Produce release body
         id: git_log
-        uses: stefpap/release-changelog-action@ba410dc670463bdf0bb368abf70cfd74bda625af
+        uses: stefpap/release-changelog-action@17dd5466d55ecd8c37ca8af9752e1bb343fe2120
         with:
           tag_regex: "v[0-9]+.[0-9]+.[0-9]+$"
       - name: Create Release
