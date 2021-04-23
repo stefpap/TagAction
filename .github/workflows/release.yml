@@ -6,7 +6,7 @@ on:
       - "v[0-9]+.[0-9]+.[0-9]+"
   workflow_dispatch:
     inputs:
-      tag:
+      version_bump:
         description: "Version to bump (major/minor/patch)"
         required: false
         default: patch
@@ -22,7 +22,6 @@ jobs:
         uses: stefpap/release-changelog-action@ba410dc670463bdf0bb368abf70cfd74bda625af
         with:
           tag_regex: "v[0-9]+.[0-9]+.[0-9]+$"
-          version_bump: patch
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.1.4
