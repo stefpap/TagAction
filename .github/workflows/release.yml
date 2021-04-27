@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Produce release body
         id: git_log
-        uses: stefpap/release-changelog-action@07605133cba2304df0444f982294a00933071171
+        uses: beatlabs/release-changelog-action@v0.0.2
         with:
           tag_regex: "v[0-9]+.[0-9]+.[0-9]+$"
           version_bump: ${{ github.event.inputs.version_bump }}
