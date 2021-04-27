@@ -4,12 +4,6 @@ on:
   push:
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
-  workflow_dispatch:
-    inputs:
-      version_bump:
-        description: "Version to bump (major/minor/patch)"
-        required: false
-        default: patch
 jobs:
   build:
     name: Create Release
@@ -22,15 +16,14 @@ jobs:
         uses: stefpap/release-changelog-action@07605133cba2304df0444f982294a00933071171
         with:
           tag_regex: "v[0-9]+.[0-9]+.[0-9]+"
-          version_bump: ${{ github.event.inputs.version_bump }}
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.1.4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.git_log.outputs.release_tag }}
-          release_name: ${{ steps.git_log.outputs.release_tag }}
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
           body: ${{ steps.git_log.outputs.release_body }}
           draft: false
           prerelease: false
