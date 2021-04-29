@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Produce release body
         id: git_log
-        uses: stefpap/release-changelog-action@1127ac4de45b4d2e9be99d47739c7a84c73bb32b
+        uses: stefpap/release-changelog-action@dc65cb9d76385c8185b3ea9c8e723f117cd5d44b
         with:
           tag_regex: "v[0-9]+.[0-9]+.[0-9]+"
           version_bump: ${{ github.event.inputs.version_bump }}
